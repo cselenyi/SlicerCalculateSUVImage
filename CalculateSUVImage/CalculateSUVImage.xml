@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>Quantification</category>
+  <index>3</index>
+  <title>Calculate SUV Image</title>
+  <description><![CDATA[Calculate Standardized Uptake Value (SUV) image from a input PET image of radioactivity]]></description>
+  <version>0.1.0.</version>
+  <documentation-url>https://github.com/blabla/SlicerCalculateSUVImage</documentation-url>
+  <license/>
+  <contributor>Zsolt Cselényi</contributor>
+  <acknowledgements><![CDATA[Thank you!]]></acknowledgements>
+  <parameters>
+    <string-enumeration>
+      <name>inputUnits</name>
+      <description><![CDATA[The radioactivity units in the input PET image:<br /> 
+	  <b>nCi_cc</b> (nCi/cm3)<br /> 
+	  <b>Bq_cc</b> (Bq/cm3)<br /> 
+	  <b>kBq_cc</b> (kBq/cm3)]]></description>
+      <label>Input Volume Units:</label>
+      <index>1</index>
+      <default>nCi_cc</default>
+      <element>Bq_cc</element>
+      <element>kBq_cc</element>
+      <element>nCi_cc</element>
+    </string-enumeration>
+    <double>
+      <name>IDMbq</name>
+      <label>Injected radioactivity dose (MBq):</label>
+      <index>2</index>
+      <description><![CDATA[The injected radioactivity dose in MBq units]]></description>
+      <default>100.0</default>
+    </double>
+    <double>
+      <name>bodyWeightkg</name>
+      <label>Body weight (kg):</label>
+      <index>3</index>
+      <description><![CDATA[The body weight of the subject in kg]]></description>
+      <default>70.0</default>
+    </double>
+    <string-enumeration>
+      <name>outputScalarType</name>
+      <description><![CDATA[The scalar data type for the output SUV volume:<br /> 
+	  <b>same</b> (same as the input image)<br /> 
+	  <b>float32</b> (32-bit floating point)<br /> 
+	  <b>float64</b> (64-bit floating point)]]></description>
+      <label>Output scalar type:</label>
+      <index>5</index>
+      <default>float32</default>
+      <element>same</element>
+      <element>float32</element>
+      <element>float64</element>
+    </string-enumeration>
+    <label>IO</label>
+    <description><![CDATA[Input/output parameters]]></description>
+    <image>
+      <name>inputVolume</name>
+      <label>Input Volume:</label>
+      <channel>input</channel>
+      <index>0</index>
+      <description><![CDATA[Input volume]]></description>
+    </image>
+    <image reference="inputVolume">
+      <name>outputVolume</name>
+      <label>Output Volume:</label>
+      <channel>output</channel>
+      <index>4</index>
+      <description><![CDATA[Output SUV Volume]]></description>
+    </image>
+  </parameters>
+</executable>
